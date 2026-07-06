@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Example</title>
+</head>
+<body>
+  <h2>傳送 x-www-form-urlencoded</h2>
+  <!-- 預設 <form> 就是 application/x-www-form-urlencoded -->
+  <form action="http://localhost:3001/saveData" method="POST">
+    <label>
+      使用者名稱:
+      <input type="text" name="username" value="Charles">
+    </label>
+    <br><br>
+    <label>
+      年齡:
+      <input type="number" name="age" value="25">
+    </label>
+    <br><br>
+    <button type="submit">送出</button>
+  </form>
+
+  <hr>
+
+  <h2>用 JavaScript fetch 傳送 (x-www-form-urlencoded)</h2>
+  <button onclick="sendData()">用 fetch 送資料</button>
+
+  <script>
+    function sendData() {
+      const params = new URLSearchParams();
+      params.append("username", "Alice");
+      params.append("age", "30");
+
+      fetch("http://localhost:3001/saveData", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString()  // => username=Alice&age=30
+      })
+      .then(res => res.json())
+      .then(data => console.log("伺服器回應:", data))
+      .catch(err => console.error("錯誤:", err));
+    }
+  </script>
+</body>
+</html>

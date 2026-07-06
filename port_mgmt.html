@@ -1,0 +1,153 @@
+﻿   <html lang="en">
+   <head>
+   <!-- Includes all JS & CSS for the JavaScript Data Grid -->
+   <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+   <!-- 引入 Quill CSS -->
+   <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+   <!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> -->
+   <!-- 引入 Quill JavaScript -->
+   <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+   <!-- 引入 SheetJS -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script> -->
+   <!-- 載入 ExcelJS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+   <!-- 引入 JSZip，用於處理 xlsx XML -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+   <!-- uuid -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+
+   <!-- font-awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+   
+   <!-- 引入編譯後的 CSS 檔案 -->
+   <link href="Quill.css" rel="stylesheet">
+   <link href="port_mgmt.css?v=20260707-grid-visible" rel="stylesheet">
+   <link href="ag-grid.css" rel="stylesheet">
+   <link href="buttons.css" rel="stylesheet">
+
+   <style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+   }
+   body {
+      min-height: 100vh;
+   }
+
+   #btn_and_myGrid {
+      display: flex;
+   }
+
+   </style>
+   <title>Port MGMT</title>
+   </head>
+   <body>
+      <!-- height: calc(100% - 40px); -->
+      <main class="page-shell">
+      <header class="page-header">
+         <div>
+            <p class="eyebrow">Local Service Workspace</p>
+            <h1>Port Management</h1>
+            <p class="page-subtitle">Manage ports, project notes, service messages and rich remarks in one place.</p>
+         </div>
+      </header>
+      <div id="btn_and_myGrid" class="data-card">
+         <div class="grid-toolbar">
+            <div class="toolbar-title">
+               <h2>Service Records</h2>
+               <span>AG Grid table</span>
+            </div>
+            <div class="toolbar-actions">
+               <button id="toggleForm" type="button" class="btn btn-primary toolbar-button primary">Add</button>
+               <button id="toggleMessages" type="button" class="btn btn-secondary icon-button toolbar-button" title="Show service messages" aria-label="Show service messages"><i class="fa-regular fa-rectangle-list"></i></button>
+            </div>
+         </div>
+         <section id="messagePanel" class="message-panel" hidden>
+            <div class="message-panel-header">
+               <h3>Service Messages</h3>
+               <span id="messageCount">0 messages</span>
+            </div>
+            <div id="messageList" class="message-list"></div>
+         </section> <!-- 用來顯示或隱藏表單 -->
+         <div class="grid-shell">
+            <div id="myGrid" class="ag-theme-quartz"></div>
+         </div>
+      </div>
+      </main>
+      <div class="container" id="formContainer">
+         <form id="form" action="" autocomplete="off">
+            <h3 class="title">Form</h3>
+            <button type="button" id="closeButton" class="btn-close" aria-label="Close"></button>
+            <div class="col">
+               <div class="row">
+                  <div class="input-box">
+                     <span>Port :</span>
+                     <!-- <select id="text-1" class="form-select"></select> -->
+                     <input id="text-1" class="validate-input" type="text" placeholder="port number">
+                  </div>
+                  <div class="input-box">
+                     <span id="data_3">Comment :</span>
+                     <input id="text-3" class="validate-input" type="text" placeholder="keyword">
+                  </div>
+               </div>
+               <div class="row third-column">
+                  <div class="input-box-1">
+                     <div class="label-and-count">
+                        <span>Remark :</span>
+                        <span id="charCount-9">50 remaining words</span>
+                     </div>
+                     <div class="quill-container">
+                           <div id="toolbar-9">
+                              <button class="ql-bold"></button>
+                              <button class="ql-italic"></button>
+                              <button class="ql-underline"></button>
+                              <button class="ql-strike"></button>
+                              <button class="ql-list" value="ordered"></button>
+                              <button class="ql-list" value="bullet"></button>
+                              <button class="ql-indent" value="-1"></button>
+                              <button class="ql-indent" value="+1"></button>
+                              <select class="ql-color"></select>
+                              <select class="ql-background"></select>
+                           </div>
+                           <div id="editor-text-9" class="quill-editor"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+      <!--  -->
+      <!-- <div class = Quill-container>
+         <div id="toolbar">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
+
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+         </div>
+         <div id="editor"></div>
+      </div> -->
+      <!-- <button onclick="addItems()">ADD</button> -->
+      <!-- <button onclick="onBtnExportExcel()">Download Excel export file</button> -->
+      <!-- <button onclick="ShowExcel()">Show XLSX export</button> -->
+   
+   </body>
+   <script src = "QuillCellEditor.js?v=20260626-quill-image-size"></script>
+   <script src = "cellRenderer.js"></script>
+   <script src = "port_mgmt.js?v=20260707-viewport-grid"></script>
+
+
+   </html>
+

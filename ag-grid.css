@@ -1,0 +1,86 @@
+  
+  .ag-center-header .ag-header-cell-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ag-right-cell {
+    text-align: right;
+  }
+
+  .ag-left-cell {
+    text-align: left;
+  }
+
+  .ag-center-cell {
+    display: flex;
+    align-items: center;
+  }
+  .ag-center-cell-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 讓文字可以換行顯示 */
+  .multi-line-cell {
+    display: flex;
+    align-items: center;
+  }
+
+  .multi-line-cell .ag-cell-value {
+    white-space: normal;  /* 保留換行，能自動斷行 */
+    line-height: 1.5;       /* 行距好看一點 */
+  }
+
+  .ag-quill-cell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: inherit;
+  }
+
+  .ag-quill-cell .ag-cell-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-block: 3px;
+    /* min-height: calc(18px * 5); */
+    max-height: 360px;
+    width: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .ag-quill-cell .ag-cell-wrapper::-webkit-scrollbar-track  {
+    /* background: rgb(247, 247, 247); */
+    /* background: #797979; */
+    /* background: rgb(30, 30, 30); */
+    background: #eef7fe;
+    border: 1px solid #999;
+    border-radius: 20px;
+  }
+
+  .ag-quill-cell .ag-cell-wrapper::-webkit-scrollbar  {
+    /* width: 0; */
+    width: 7px;
+  }
+
+  /* .ag-quill-cell .ag-cell-wrapper:hover::-webkit-scrollbar  {
+    width: 7px;
+  } */
+
+  .ag-quill-cell .ag-cell-wrapper::-webkit-scrollbar-thumb  {
+    /* background: #d5d5d5; */
+    background: #999;  
+    /* background: #f2f2f2; */
+    border: 1px solid #999;
+    border-radius: 20px;
+  }
+  /* display: block;      避免與文字同行造成溢出 */
+  /* object-fit: contain; 裁切行為避免變形（備用） */
+  /* .ag-quill-cell .ag-cell-value .ql-editor img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  } */

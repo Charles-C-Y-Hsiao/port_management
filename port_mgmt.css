@@ -1,0 +1,511 @@
+﻿:root {
+  --remark-image-max-width: 688px;
+}
+
+/* AG Grid 一般顯示用的 .ql-editor-modify img
+表單裡的 .quill-editor .ql-editor img */
+/* AG Grid popup editor 裡的 .quill-cell-editor .ql-editor img 沒有作用 */
+.ql-editor-modify img,
+.quill-editor .ql-editor img {
+  max-width: min(100%, var(--remark-image-max-width));
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+  /* display: block;      避免與文字同行造成溢出 */
+  /* object-fit: contain; 裁切行為避免變形（備用） */
+  /* .ag-quill-cell .ag-cell-value .ql-editor img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  } */
+
+  /* .quill-cell-editor-popup {
+    width: min(90vw, calc(var(--remark-image-max-width) + 22px));
+  } */
+
+.quill-cell-editor {
+  width: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 34rem),
+    #f3f6fb;
+  color: #172033;
+  height: 100vh;
+  padding: 18px 24px;
+  overflow: hidden;
+}
+
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 1240px);
+  height: calc(100vh - 36px);
+  margin: 0 auto;
+  min-height: 0;
+}
+
+.page-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.65rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-subtitle {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+#btn_and_myGrid.data-card {
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #dbe4ef;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.10);
+}
+
+.grid-toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5eaf2;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.toolbar-title h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.toolbar-title span {
+  display: block;
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.toolbar-actions .toolbar-button {
+  min-width: 42px;
+  height: 38px;
+  margin: 0;
+  border-radius: 9px;
+  border: 1px solid #d8e1ee;
+  background: #ffffff;
+  color: #334155;
+  font-weight: 650;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.toolbar-actions .toolbar-button.primary {
+  min-width: 92px;
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.toolbar-actions .toolbar-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.10);
+}
+
+.grid-shell {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 14px 16px 16px;
+  background: #ffffff;
+}
+
+#myGrid {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #e5eaf2;
+  border-radius: 12px;
+}
+
+#myGrid.ag-theme-quartz {
+  --ag-background-color: #ffffff;
+  --ag-foreground-color: #172033;
+  --ag-header-background-color: #f8fafc;
+  --ag-odd-row-background-color: #ffffff;
+  --ag-row-hover-color: #eff6ff;
+  --ag-selected-row-background-color: #dbeafe;
+  --ag-border-color: #e5eaf2;
+  --ag-secondary-border-color: #edf2f7;
+  --ag-header-foreground-color: #334155;
+  --ag-font-size: 14px;
+  --ag-font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  --ag-wrapper-border-radius: 12px;
+}
+
+#myGrid .ag-header,
+#myGrid .ag-floating-top,
+#myGrid .ag-floating-filter {
+  border-color: #e5eaf2;
+}
+
+#myGrid .ag-header-cell-text {
+  font-weight: 700;
+}
+
+#myGrid .ag-row {
+  border-color: #edf2f7;
+}
+
+#myGrid .ag-quill-cell {
+  align-items: flex-start;
+}
+
+#myGrid .ag-floating-filter-input input,
+#myGrid .ag-input-field-input {
+  min-height: 30px;
+  border-radius: 8px;
+  border-color: #dbe4ef;
+  background: #ffffff;
+}
+
+.container{
+  display: none; /* 預設隱藏表單 */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: #1f242d;
+  padding: 25px;
+  position: relative; /* 讓 Add/Update 按鈕相對於 container 定位 */
+}
+#toggleForm {
+  /* position: absolute; */
+  /* left: 100px;
+  top: 100px; */
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  /* 提高 z-index 層級 */
+  /* z-index: 10; */
+}
+/* #form {
+  position: absolute;
+} */
+
+.container form{
+  width: 820px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  position: relative; /* 讓 close_Btn 相對於 form 定位 */
+}
+#closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-close {
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237e8790'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E") center/1em auto no-repeat;
+}
+.btn-close:hover {
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230d6efd'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E") center/1em auto no-repeat;
+  color: #000;
+  text-decoration: none;
+  opacity: .75;
+}
+form .col{
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  /* flex-wrap: wrap;
+  align-items: stretch;
+  max-width: 100%;
+  margin: 0 auto; */    
+}
+.col .row{
+  /* flex: 1 1 250px; */
+  /* padding: 0 5px; */
+  display: flex;
+  gap: 5px;
+}
+/* 第一個 .row 的左側 padding 設為 0 */
+/* .col .row:first-child {
+  padding-left: 0;
+} */
+/* 最後一個 .row 的右側 padding 設為 0 */
+/* .col .row:last-child {
+  padding-right: 0;
+} */
+/* .row.third-column {
+  flex: 1 1 350px;
+} */
+.row .title{
+  font-size: 20px;
+  color: #333;
+  text-transform: uppercase; /* 轉換為大寫文字 */
+  margin-bottom: 5px;
+}
+.row .input-box{
+  margin: 5px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.row .input-box-1{
+  margin: 5px 0;
+  flex: 1;
+  display: block;
+}
+#text-9,
+#text-10 {
+    height: 150px; /* 固定編輯區高度 */
+    line-height: 1; /* 使用緊湊行高 */
+}
+.row .input-box-card{
+    /* 上右下左 */
+    /* margin: 15px 0px 15px 0px; */
+    margin: 15px 0px;
+}
+.input-box span{
+    display: block;
+    margin-bottom: 5px;
+}
+/* 只影響 .input-box-1 的直接子層 span，不影響更深層的 span */
+.input-box-1 > span{
+    display: block;
+    margin-bottom: 10px;
+}
+/* .input-box input{
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    flex: 1;
+} */
+.input-box input,
+.input-box select {
+    height: 2.5rem; /* 統一高度 */
+    padding: 0.375rem 0.75rem; /* 統一內距 */
+    font-size: 1rem; /* 統一字體大小 */
+    line-height: 1.5; /* 統一行高 */
+    border: 1px solid #ccc; /* 統一邊框 */
+    border-radius: 6px; /* 統一圓角 */
+    box-sizing: border-box; /* 將邊框與內距納入尺寸 */
+    appearance: none; /* 清除 select 預設外觀 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* .input-box-1 input{
+    width: 100%;
+    padding: 0px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    flex: 1;
+} */
+.row .flex{
+    display: flex;
+    gap: 15px;
+}
+.flex .input-box{
+    margin-top: 5px;
+}
+.flex .input-box-1{
+    margin-top: 5px;
+}
+.input-box-card img{
+    height: 34px;
+    margin-top: 11px;
+    filter: drop-shadow(0 0 1px #000);
+    cursor: pointer;
+}
+form .btn{
+    width: 100%;
+    padding: 12px;
+    /* border: none; */
+    /* outline: none; */
+    /* border-radius: 6px; */
+    font-size: 17px;
+    /* color: #fff; */
+    margin-top: 5px;
+    cursor: pointer;
+}
+/* form .btn{
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to bottom, #8175d3, #1f242d);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 17px;
+    color: #fff;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+form .btn:hover{
+    background: linear-gradient(to bottom, #1f242d, #8175d3);
+} */
+.quill-editor {
+  height: 150px; /* 設定編輯區高度 */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.ql-editor {
+  padding: 0;
+  font-size: 1rem;
+}
+#toolbar-9,
+#toolbar-10 {
+  display: flex;
+  align-items: center; /* 垂直置中 */
+  padding: 5px 10px;
+  margin: 0px;
+}
+.label-and-count {
+  display: flex;
+  justify-content: space-between; /* 左右分散對齊 */
+  align-items: center; /* 垂直置中 */
+  margin-bottom: 5px;
+}
+.label_and_hint {
+  display: flex;
+  justify-content: space-between; /* 左右分散對齊 */
+  align-items: center; /* 垂直置中 */
+}
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.message-panel {
+  width: 100%;
+  max-height: 320px;
+  overflow: hidden;
+  border: 1px solid #d4d9e2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.message-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e6e9ef;
+  background: #f7f9fc;
+}
+
+.message-panel-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+#messageCount {
+  color: #667085;
+  font-size: 0.875rem;
+}
+
+.message-list {
+  max-height: 260px;
+  overflow: auto;
+  padding: 10px 12px;
+}
+
+.message-item {
+  border-bottom: 1px solid #edf0f5;
+  padding: 10px 0;
+}
+
+.message-item:first-child {
+  padding-top: 0;
+}
+
+.message-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.message-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  color: #667085;
+  font-size: 0.875rem;
+}
+
+.message-type {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.message-item pre {
+  margin: 0;
+  padding: 8px;
+  overflow: auto;
+  border-radius: 6px;
+  background: #f3f5f8;
+  color: #1f2937;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-empty {
+  padding: 16px;
+  color: #667085;
+  text-align: center;
+}
